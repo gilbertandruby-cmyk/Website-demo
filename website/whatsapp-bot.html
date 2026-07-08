@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Bot - Pair Code Generator</title>
+    <link rel="stylesheet" href="whatsapp-bot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fab fa-whatsapp"></i>
+                <h1>WhatsApp Bot</h1>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#pair-code" class="nav-link" data-section="pair-code">
+                    <i class="fas fa-qrcode"></i> Pair Code
+                </a>
+                <a href="#commands" class="nav-link" data-section="commands">
+                    <i class="fas fa-list"></i> Commands
+                </a>
+                <a href="#dashboard" class="nav-link" data-section="dashboard">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+            </nav>
+        </header>
+
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h2>Welcome to WhatsApp Bot</h2>
+                <p class="subtitle">Automate your WhatsApp with powerful commands and features</p>
+                
+                <div class="features-showcase">
+                    <div class="feature">
+                        <i class="fas fa-lock"></i>
+                        <h3>Pair Code Authentication</h3>
+                        <p>Secure login without QR codes</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-commands"></i>
+                        <h3>50+ Commands</h3>
+                        <p>Wide range of automation features</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Ready</h3>
+                        <p>Deploy anywhere with ease</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure & Safe</h3>
+                        <p>Your data is encrypted</p>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="goToSection('pair-code')">
+                        <i class="fas fa-arrow-right"></i> Get Pair Code
+                    </button>
+                    <button class="btn btn-secondary" onclick="goToSection('commands')">
+                        <i class="fas fa-book"></i> View Commands
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pair Code Section -->
+        <section id="pair-code" class="section">
+            <div class="pair-code-container">
+                <h2>WhatsApp Pair Code Generator</h2>
+                <p class="subtitle">Get your unique pair code to connect your WhatsApp</p>
+
+                <div class="pair-code-box">
+                    <div class="step-indicator">
+                        <div class="step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <p>Enter Phone</p>
+                        </div>
+                        <div class="step" data-step="2">
+                            <span class="step-number">2</span>
+                            <p>Get Code</p>
+                        </div>
+                        <div class="step" data-step="3">
+                            <span class="step-number">3</span>
+                            <p>Verify</p>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label for="phoneNumber">Phone Number (with country code)</label>
+                            <div class="phone-input-wrapper">
+                                <span class="country-code">+</span>
+                                <input 
+                                    type="tel" 
+                                    id="phoneNumber" 
+                                    placeholder="1234567890" 
+                                    maxlength="15"
+                                >
+                            </div>
+                            <small>Example: +1234567890 (with country code)</small>
+                        </div>
+
+                        <button class="btn btn-primary btn-large" id="generateBtn" onclick="generatePairCode()">
+                            <i class="fas fa-magic"></i> Generate Pair Code
+                        </button>
+
+                        <div id="loadingSpinner" class="loading-spinner hidden">
+                            <i class="fas fa-spinner"></i>
+                            <p>Generating your pair code...</p>
+                        </div>
+                    </div>
+
+                    <div id="pairCodeResult" class="pair-code-result hidden">
+                        <div class="success-message">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Pair Code Generated!</h3>
+                        </div>
+
+                        <div class="code-display">
+                            <label>Your Pair Code:</label>
+                            <div class="code-box">
+                                <code id="pairCodeDisplay">000-000-000</code>
+                                <button class="copy-btn" onclick="copyPairCode()">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <small>⏰ This code expires in 5 minutes</small>
+                        </div>
+
+                        <div class="instructions">
+                            <h4>How to use this code:</h4>
+                            <ol>
+                                <li>Open WhatsApp on your phone</li>
+                                <li>Go to Settings → Linked Devices</li>
+                                <li>Click "Link a Device"</li>
+                                <li>Enter this pair code when prompted</li>
+                                <li>Bot will automatically activate</li>
+                            </ol>
+                        </div>
+
+                        <div class="security-notice">
+                            <i class="fas fa-shield-alt"></i>
+                            <p><strong>Security Notice:</strong> Keep your pair code private. Never share it with anyone.</p>
+                        </div>
+
+                        <button class="btn btn-secondary" onclick="resetPairCode()">
+                            Generate New Code
+                        </button>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <i class="fas fa-chevron-down"></i>
+                            <strong>What is a Pair Code?</strong>
+                        </div>
+                        <div class="faq-answer">
+                            A pair code is a unique 9-digit code that links your bot to your WhatsApp account. It's more secure than QR codes and works on any device.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <i class="fas fa-chevron-down"></i>
+                            <strong>Is my account safe?</strong>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! Your account remains under your control. The bot acts as a linked device, just like WhatsApp Web. You can disconnect anytime.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <i class="fas fa-chevron-down"></i>
+                            <strong>What if the code expires?</strong>
+                        </div>
+                        <div class="faq-answer">
+                            If your code expires, simply generate a new one. You have 5 minutes to use the code after generation.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <i class="fas fa-chevron-down"></i>
+                            <strong>Can I use multiple devices?</strong>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! You can link up to 5 devices simultaneously with your WhatsApp account.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Commands Section -->
+        <section id="commands" class="section">
+            <div class="commands-container">
+                <h2>Available Commands</h2>
+                <p class="subtitle">50+ commands to automate your WhatsApp</p>
+
+                <div class="command-filters">
+                    <button class="filter-btn active" onclick="filterCommands('all')">All Commands</button>
+                    <button class="filter-btn" onclick="filterCommands('utility')">Utility</button>
+                    <button class="filter-btn" onclick="filterCommands('fun')">Fun</button>
+                    <button class="filter-btn" onclick="filterCommands('admin')">Admin</button>
+                </div>
+
+                <div class="commands-grid">
+                    <!-- Utility Commands -->
+                    <div class="command-card" data-category="utility">
+                        <div class="command-header">
+                            <code>.ping</code>
+                            <span class="category-badge utility">Utility</span>
+                        </div>
+                        <p>Check if bot is online and responsive</p>
+                        <small>Usage: <code>.ping</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="utility">
+                        <div class="command-header">
+                            <code>.help</code>
+                            <span class="category-badge utility">Utility</span>
+                        </div>
+                        <p>Display all available commands</p>
+                        <small>Usage: <code>.help</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="utility">
+                        <div class="command-header">
+                            <code>.owner</code>
+                            <span class="category-badge utility">Utility</span>
+                        </div>
+                        <p>Get bot creator information</p>
+                        <small>Usage: <code>.owner</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="utility">
+                        <div class="command-header">
+                            <code>.time</code>
+                            <span class="category-badge utility">Utility</span>
+                        </div>
+                        <p>Get current time in different timezones</p>
+                        <small>Usage: <code>.time [timezone]</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="utility">
+                        <div class="command-header">
+                            <code>.weather</code>
+                            <span class="category-badge utility">Utility</span>
+                        </div>
+                        <p>Get weather information for any city</p>
+                        <small>Usage: <code>.weather [city]</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="utility">
+                        <div class="command-header">
+                            <code>.sticker</code>
+                            <span class="category-badge utility">Utility</span>
+                        </div>
+                        <p>Convert image or video to sticker</p>
+                        <small>Usage: <code>.sticker [reply to image]</code></small>
+                    </div>
+
+                    <!-- Fun Commands -->
+                    <div class="command-card" data-category="fun">
+                        <div class="command-header">
+                            <code>.joke</code>
+                            <span class="category-badge fun">Fun</span>
+                        </div>
+                        <p>Get a random funny joke</p>
+                        <small>Usage: <code>.joke</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="fun">
+                        <div class="command-header">
+                            <code>.quote</code>
+                            <span class="category-badge fun">Fun</span>
+                        </div>
+                        <p>Get inspirational quotes</p>
+                        <small>Usage: <code>.quote</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="fun">
+                        <div class="command-header">
+                            <code>.dice</code>
+                            <span class="category-badge fun">Fun</span>
+                        </div>
+                        <p>Roll a random dice (1-6)</p>
+                        <small>Usage: <code>.dice</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="fun">
+                        <div class="command-header">
+                            <code>.coin</code>
+                            <span class="category-badge fun">Fun</span>
+                        </div>
+                        <p>Flip a coin (Heads/Tails)</p>
+                        <small>Usage: <code>.coin</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="fun">
+                        <div class="command-header">
+                            <code>.calculator</code>
+                            <span class="category-badge fun">Fun</span>
+                        </div>
+                        <p>Solve mathematical equations</p>
+                        <small>Usage: <code>.calc 5+5*2</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="fun">
+                        <div class="command-header">
+                            <code>.ascii</code>
+                            <span class="category-badge fun">Fun</span>
+                        </div>
+                        <p>Convert text to ASCII art</p>
+                        <small>Usage: <code>.ascii Hello</code></small>
+                    </div>
+
+                    <!-- Admin Commands -->
+                    <div class="command-card" data-category="admin">
+                        <div class="command-header">
+                            <code>.status-saver</code>
+                            <span class="category-badge admin">Admin</span>
+                        </div>
+                        <p>Download status from contacts</p>
+                        <small>Usage: <code>.status-saver [reply to status]</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="admin">
+                        <div class="command-header">
+                            <code>.anti-delete</code>
+                            <span class="category-badge admin">Admin</span>
+                        </div>
+                        <p>Recover deleted messages</p>
+                        <small>Usage: Auto-enabled in chats</small>
+                    </div>
+
+                    <div class="command-card" data-category="admin">
+                        <div class="command-header">
+                            <code>.broadcast</code>
+                            <span class="category-badge admin">Admin</span>
+                        </div>
+                        <p>Send message to multiple contacts</p>
+                        <small>Usage: <code>.broadcast [message]</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="admin">
+                        <div class="command-header">
+                            <code>.group-info</code>
+                            <span class="category-badge admin">Admin</span>
+                        </div>
+                        <p>Get detailed group information</p>
+                        <small>Usage: <code>.group-info</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="admin">
+                        <div class="command-header">
+                            <code>.remind</code>
+                            <span class="category-badge admin">Admin</span>
+                        </div>
+                        <p>Set reminders for later</p>
+                        <small>Usage: <code>.remind [time] [message]</code></small>
+                    </div>
+
+                    <div class="command-card" data-category="admin">
+                        <div class="command-header">
+                            <code>.auto-reply</code>
+                            <span class="category-badge admin">Admin</span>
+                        </div>
+                        <p>Set automatic replies to messages</p>
+                        <small>Usage: <code>.auto-reply [on/off]</code></small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+            <div class="dashboard-container">
+                <h2>Bot Dashboard</h2>
+                <p class="subtitle">Monitor your bot's activity and status</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-circle-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Status</h4>
+                            <p class="status-text active">● Online</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Messages Processed</h4>
+                            <p class="stat-number">1,245</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Active Chats</h4>
+                            <p class="stat-number">48</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Uptime</h4>
+                            <p class="stat-number">99.8%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-section">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-log">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-message"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <p><strong>Message processed</strong> - User executed .help</p>
+                                    <small>2 minutes ago</small>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-link"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <p><strong>Device linked</strong> - New pair code authenticated</p>
+                                    <small>1 hour ago</small>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-image"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <p><strong>Sticker created</strong> - Image converted to sticker</p>
+                                    <small>3 hours ago</small>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <p><strong>Status saved</strong> - Contact status downloaded</p>
+                                    <small>5 hours ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <h3>Quick Settings</h3>
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Auto-Reply</h4>
+                                    <p>Automatically reply to messages</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Anti-Delete</h4>
+                                    <p>Recover deleted messages</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Message Notifications</h4>
+                                    <p>Get notified of commands</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Broadcast Mode</h4>
+                                    <p>Allow mass messaging</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deployment-section">
+                    <h3>Deploy Your Bot</h3>
+                    <p>Run your bot 24/7 on cloud servers</p>
+                    <div class="deploy-buttons">
+                        <button class="btn btn-deploy">
+                            <i class="fab fa-heroku"></i> Deploy to Heroku
+                        </button>
+                        <button class="btn btn-deploy">
+                            <i class="fas fa-cloud"></i> Deploy to Railway
+                        </button>
+                        <button class="btn btn-deploy">
+                            <i class="fab fa-docker"></i> Deploy with Docker
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 WhatsApp Bot. All rights reserved.</p>
+        <p class="disclaimer">⚠️ Use responsibly and in compliance with WhatsApp Terms of Service</p>
+    </footer>
+
+    <script src="whatsapp-bot.js"></script>
+</body>
+</html>
