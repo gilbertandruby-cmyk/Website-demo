@@ -1,0 +1,29 @@
+{
+  "name": "prince-mdx-whatsapp-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp bot with anti-delete messages and auto view status",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "baileys",
+    "mdx"
+  ],
+  "author": "Prince MDX",
+  "license": "MIT",
+  "dependencies": {
+    "@whiskeysockets/baileys": "latest",
+    "qrcode-terminal": "^0.12.0",
+    "chalk": "^4.1.2",
+    "dotenv": "^16.0.3",
+    "pino": "^8.11.0",
+    "pino-pretty": "^10.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
