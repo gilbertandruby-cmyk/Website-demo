@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Signal Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Forex Signal Generator</h1>
+            <p>Real-time trading signals powered by technical analysis</p>
+        </header>
+
+        <div class="control-panel">
+            <div class="form-group">
+                <label for="pairSelect">Trading Pair:</label>
+                <select id="pairSelect">
+                    <option value="EURUSD">EUR/USD</option>
+                    <option value="GBPUSD">GBP/USD</option>
+                    <option value="USDJPY">USD/JPY</option>
+                    <option value="AUDUSD">AUD/USD</option>
+                    <option value="USDCAD">USD/CAD</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="timeframeSelect">Timeframe:</label>
+                <select id="timeframeSelect">
+                    <option value="1m">1 Minute</option>
+                    <option value="5m">5 Minutes</option>
+                    <option value="15m">15 Minutes</option>
+                    <option value="1h">1 Hour</option>
+                    <option value="4h">4 Hours</option>
+                    <option value="1d">Daily</option>
+                </select>
+            </div>
+
+            <button id="generateBtn" class="btn-primary">Generate Signal</button>
+        </div>
+
+        <div class="signals-container">
+            <div class="signal-card">
+                <h2>Current Signal</h2>
+                <div id="signalDisplay" class="signal-display">
+                    <p class="placeholder">Select a pair and click Generate</p>
+                </div>
+            </div>
+
+            <div class="signal-card">
+                <h2>Technical Indicators</h2>
+                <div id="indicatorsDisplay" class="indicators-display">
+                    <p class="placeholder">Indicators will appear here</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="priceChart"></canvas>
+        </div>
+
+        <div class="signal-history">
+            <h2>Signal History</h2>
+            <table id="historyTable">
+                <thead>
+                    <tr>
+                        <th>Pair</th>
+                        <th>Timeframe</th>
+                        <th>Signal</th>
+                        <th>Confidence</th>
+                        <th>Price</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="signal-generator.js"></script>
+</body>
+</html>
