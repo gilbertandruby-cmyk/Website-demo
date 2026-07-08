@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Signal Generator - Dashboard</title>
+    <link rel="stylesheet" href="forex-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-chart-line"></i>
+            <h2>ForexSignal</h2>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="#dashboard" class="menu-item active" data-page="dashboard">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#signals" class="menu-item" data-page="signals">
+                <i class="fas fa-bell"></i>
+                <span>Active Signals</span>
+                <span class="badge">5</span>
+            </a>
+            <a href="#watchlist" class="menu-item" data-page="watchlist">
+                <i class="fas fa-star"></i>
+                <span>Watchlist</span>
+            </a>
+            <a href="#analytics" class="menu-item" data-page="analytics">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            <a href="#settings" class="menu-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#profile" class="profile-link">
+                <img src="https://via.placeholder.com/40" alt="Profile">
+                <div>
+                    <p>John Trader</p>
+                    <small>Premium Member</small>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search currency pairs...">
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-menu">
+                    <img src="https://via.placeholder.com/35" alt="User">
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="content-area">
+            <!-- Dashboard Page -->
+            <div class="page-content active" id="dashboard-page">
+                <!-- Quick Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon active-signals">
+                            <i class="fas fa-signal"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Active Signals</p>
+                        </div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 24%
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon win-rate">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>78%</h3>
+                            <p>Win Rate</p>
+                        </div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 5%
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon profit">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>$2,450</h3>
+                            <p>Monthly Profit</p>
+                        </div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 12%
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon risk">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>2.1%</h3>
+                            <p>Risk/Reward</p>
+                        </div>
+                        <div class="stat-change neutral">
+                            <i class="fas fa-minus"></i> 0%
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-section">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Signal Performance (30 Days)</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active">1D</button>
+                                <button class="chart-btn">1W</button>
+                                <button class="chart-btn">1M</button>
+                                <button class="chart-btn">3M</button>
+                            </div>
+                        </div>
+                        <div class="chart-placeholder">
+                            <canvas id="performanceChart"></canvas>
+                            <p style="text-align: center; color: #999; padding: 40px;">Chart integration area - Use TradingView Lightweight Charts or Chart.js</p>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Win/Loss Distribution</h3>
+                        </div>
+                        <div class="chart-placeholder">
+                            <canvas id="winLossChart"></canvas>
+                            <p style="text-align: center; color: #999; padding: 40px;">Pie Chart - Wins vs Losses</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Signals Table -->
+                <div class="signals-table-section">
+                    <div class="section-header">
+                        <h3>Recent Signals</h3>
+                        <a href="#signals" class="view-all">View All →</a>
+                    </div>
+                    <table class="signals-table">
+                        <thead>
+                            <tr>
+                                <th>Currency Pair</th>
+                                <th>Signal Type</th>
+                                <th>Entry Price</th>
+                                <th>Target</th>
+                                <th>Stop Loss</th>
+                                <th>Strength</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>EUR/USD</strong>
+                                    <small style="color: #999;">1.0850</small>
+                                </td>
+                                <td><span class="badge-buy">BUY</span></td>
+                                <td>1.0850</td>
+                                <td>1.0920</td>
+                                <td>1.0810</td>
+                                <td>
+                                    <div class="strength-bar">
+                                        <div class="strength-fill" style="width: 95%;"></div>
+                                    </div>
+                                </td>
+                                <td><span class="status-active">Active</span></td>
+                                <td>
+                                    <button class="action-btn" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>GBP/USD</strong>
+                                    <small style="color: #999;">1.2680</small>
+                                </td>
+                                <td><span class="badge-sell">SELL</span></td>
+                                <td>1.2680</td>
+                                <td>1.2580</td>
+                                <td>1.2750</td>
+                                <td>
+                                    <div class="strength-bar">
+                                        <div class="strength-fill" style="width: 88%;"></div>
+                                    </div>
+                                </td>
+                                <td><span class="status-active">Active</span></td>
+                                <td>
+                                    <button class="action-btn" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>USD/JPY</strong>
+                                    <small style="color: #999;">149.50</small>
+                                </td>
+                                <td><span class="badge-buy">BUY</span></td>
+                                <td>149.50</td>
+                                <td>150.20</td>
+                                <td>149.10</td>
+                                <td>
+                                    <div class="strength-bar">
+                                        <div class="strength-fill" style="width: 72%;"></div>
+                                    </div>
+                                </td>
+                                <td><span class="status-active">Active</span></td>
+                                <td>
+                                    <button class="action-btn" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>AUD/USD</strong>
+                                    <small style="color: #999;">0.6750</small>
+                                </td>
+                                <td><span class="badge-sell">SELL</span></td>
+                                <td>0.6750</td>
+                                <td>0.6680</td>
+                                <td>0.6820</td>
+                                <td>
+                                    <div class="strength-bar">
+                                        <div class="strength-fill" style="width: 65%;"></div>
+                                    </div>
+                                </td>
+                                <td><span class="status-pending">Pending</span></td>
+                                <td>
+                                    <button class="action-btn" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Signals Page (Hidden by default) -->
+            <div class="page-content" id="signals-page">
+                <h2>Active Signals</h2>
+                <p style="color: #666; margin-top: 20px;">Active signals content will display here</p>
+            </div>
+
+            <!-- Watchlist Page (Hidden by default) -->
+            <div class="page-content" id="watchlist-page">
+                <h2>Watchlist</h2>
+                <p style="color: #666; margin-top: 20px;">Watchlist content will display here</p>
+            </div>
+
+            <!-- Analytics Page (Hidden by default) -->
+            <div class="page-content" id="analytics-page">
+                <h2>Analytics</h2>
+                <p style="color: #666; margin-top: 20px;">Analytics content will display here</p>
+            </div>
+
+            <!-- Settings Page (Hidden by default) -->
+            <div class="page-content" id="settings-page">
+                <h2>Settings</h2>
+                <p style="color: #666; margin-top: 20px;">Settings content will display here</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Signal Details -->
+    <div class="modal" id="signalModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Signal Details</h2>
+            <div class="modal-body">
+                <p>Signal details will display here when you click on a signal</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="forex-dashboard.js"></script>
+</body>
+</html>
