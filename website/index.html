@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elvis Bot - WhatsApp Automation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-robot"></i>
+                <span>Elvis Bot</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#install">Install</a></li>
+                <li><a href="#commands">Commands</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>🤖 Elvis Bot</h1>
+            <p>The Ultimate WhatsApp Automation Bot</p>
+            <p class="subtitle">Anti-Delete Messages • Auto View Status • Smart Commands</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollTo('install')">Get Started</button>
+                <button class="btn btn-secondary" onclick="window.open('https://github.com/gilbertandruby-cmyk/Website-demo')">View on GitHub</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Amazing Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚨</div>
+                    <h3>Anti-Delete Messages</h3>
+                    <p>Automatically recover and restore deleted messages in real-time. Never miss important conversations again.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">👁️</div>
+                    <h3>Auto View Status</h3>
+                    <p>View WhatsApp status updates automatically without leaving a read receipt. Completely silent and invisible.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Command System</h3>
+                    <p>Extensible command handler for easy customization. Create your own commands and automate tasks.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Multi-Device</h3>
+                    <p>Run multiple WhatsApp accounts simultaneously. Full support for linked devices.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Message Caching</h3>
+                    <p>Smart message storage for quick recovery. Automatic cleanup and memory optimization.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-time Processing</h3>
+                    <p>Instant message handling and response. Lightning-fast performance and reliability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="install" class="installation">
+        <div class="container">
+            <h2>Quick Installation</h2>
+            <div class="install-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Clone Repository</h3>
+                    <pre><code>git clone https://github.com/gilbertandruby-cmyk/Website-demo.git
+cd Website-demo</code></pre>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Install Dependencies</h3>
+                    <pre><code>npm install</code></pre>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Configure Bot</h3>
+                    <pre><code>cp .env.example .env
+# Edit .env with your settings</code></pre>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Start Bot</h3>
+                    <pre><code>npm start</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commands Section -->
+    <section id="commands" class="commands">
+        <div class="container">
+            <h2>Available Commands</h2>
+            <div class="commands-list">
+                <div class="command-item">
+                    <code>.ping</code>
+                    <span>Check if bot is alive and responsive</span>
+                </div>
+                <div class="command-item">
+                    <code>.help</code>
+                    <span>Display all available commands</span>
+                </div>
+                <div class="command-item">
+                    <code>.info</code>
+                    <span>Show bot information and status</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Section -->
+    <section class="deployment">
+        <div class="container">
+            <h2>Deploy on Cloud</h2>
+            <div class="deploy-options">
+                <div class="deploy-card">
+                    <h3>Heroku</h3>
+                    <p>Easy deployment with automatic updates</p>
+                    <button class="btn btn-primary" onclick="window.open('https://dashboard.heroku.com/new?template=https://github.com/gilbertandruby-cmyk/Website-demo')">Deploy to Heroku</button>
+                </div>
+
+                <div class="deploy-card">
+                    <h3>Railway</h3>
+                    <p>Modern cloud platform for Node.js</p>
+                    <button class="btn btn-primary" onclick="window.open('https://railway.app')">Deploy to Railway</button>
+                </div>
+
+                <div class="deploy-card">
+                    <h3>Replit</h3>
+                    <p>Quick deployment with online editor</p>
+                    <button class="btn btn-primary" onclick="window.open('https://replit.com')">Deploy to Replit</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>Have questions or need support? Reach out to us!</p>
+            <div class="contact-links">
+                <a href="https://github.com/gilbertandruby-cmyk/Website-demo" class="contact-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="mailto:gilbertandruby@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Elvis Bot. All rights reserved.</p>
+            <p class="disclaimer">Built with ❤️ | For educational purposes only</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollTo(id) {
+            const element = document.getElementById(id);
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

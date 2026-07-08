@@ -1,6 +1,6 @@
-# Prince MDX WhatsApp Bot 🤖
+# Elvis Bot 🤖
 
-A powerful WhatsApp bot with anti-delete messages and auto view status features based on Prince MDX.
+A powerful WhatsApp bot with anti-delete messages and auto view status features.
 
 ## Features ✨
 
@@ -15,8 +15,8 @@ A powerful WhatsApp bot with anti-delete messages and auto view status features 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/prince-mdx-whatsapp-bot.git
-cd prince-mdx-whatsapp-bot
+git clone https://github.com/yourusername/elvis-bot.git
+cd elvis-bot
 
 # Install dependencies
 npm install
@@ -30,7 +30,7 @@ cp .env.example .env
 Edit `.env` file with your settings:
 
 ```env
-BOT_NAME=Prince MDX
+BOT_NAME=Elvis Bot
 OWNER_NAME=Your Name
 OWNER_NUMBER=2348000000000
 PREFIX=.
@@ -166,9 +166,9 @@ MIT License - Feel free to use and modify
 
 ## Credits 👏
 
-- Based on Prince MDX bot framework
+- Built with ❤️ as Elvis Bot
 - Uses Baileys library
-- Built with ❤️
+- WhatsApp Web automation
 
 ## Support 💬
 

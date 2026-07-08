@@ -1,0 +1,46 @@
+{
+  "name": "Elvis Bot",
+  "description": "WhatsApp bot with anti-delete messages and auto view status",
+  "repository": "https://github.com/gilbertandruby-cmyk/Website-demo",
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "baileys",
+    "elvis"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "BOT_NAME": {
+      "description": "Name of your bot",
+      "value": "Elvis Bot"
+    },
+    "OWNER_NAME": {
+      "description": "Owner name",
+      "value": "Your Name"
+    },
+    "OWNER_NUMBER": {
+      "description": "Owner WhatsApp number with country code (e.g., 2348000000000)",
+      "value": "2348000000000"
+    },
+    "PREFIX": {
+      "description": "Command prefix",
+      "value": "."
+    },
+    "ANTI_DELETE": {
+      "description": "Enable anti-delete feature",
+      "value": "true"
+    },
+    "AUTO_VIEW_STATUS": {
+      "description": "Enable auto view status feature",
+      "value": "true"
+    },
+    "DEBUG": {
+      "description": "Enable debug mode",
+      "value": "false"
+    }
+  }
+}
