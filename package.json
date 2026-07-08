@@ -1,7 +1,7 @@
 {
-  "name": "prince-mdx-whatsapp-bot",
+  "name": "elvis-bot",
   "version": "1.0.0",
-  "description": "WhatsApp bot with anti-delete messages and auto view status",
+  "description": "Elvis Bot - WhatsApp bot with anti-delete messages and auto view status",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -11,9 +11,9 @@
     "whatsapp",
     "bot",
     "baileys",
-    "mdx"
+    "elvis"
   ],
-  "author": "Prince MDX",
+  "author": "Elvis Bot",
   "license": "MIT",
   "dependencies": {
     "@whiskeysockets/baileys": "latest",
